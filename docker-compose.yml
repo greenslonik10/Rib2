@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  diary.webapi:
+    image: ${DOCKER_REGISTRY-}diarywebapi
+    build:
+      context: .
+      dockerfile: Diary.WebAPI/Dockerfile
+    depends_on:
+      - diary.sql
+  
+  diary.sql:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      - ACCEPT_EULA=Y
+

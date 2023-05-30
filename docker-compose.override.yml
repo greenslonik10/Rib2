@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+  diary.webapi:
+    ports:
+      - "8000:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=development
+    depends_on:
+      - diary.sql
+
+  diary.sql:
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Pa11Wordddd
+      - MSSQL_PID=Express
+    ports:
+      - "21433:1433"
